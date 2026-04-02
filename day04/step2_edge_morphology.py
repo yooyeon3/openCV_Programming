@@ -32,7 +32,7 @@ else:
     gray = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
 
 # 1. Canny 에지 검출
-edges = cv.Canny(gray, 50, 150)
+edges = cv.Canny(gray, 100, 200)
 
 # 2. 모폴로지 연산
 kernel = cv.getStructuringElement(cv.MORPH_ELLIPSE, (5, 5))
