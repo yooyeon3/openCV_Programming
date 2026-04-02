@@ -74,4 +74,4 @@ while True:
         print("🔄 실시간 모드로 돌아갑니다.")
 
 cap.release()
-cv.destroyAllWindows()q
+cv.destroyAllWindows()
