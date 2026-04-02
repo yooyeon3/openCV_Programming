@@ -1,0 +1,29 @@
+import urllib.request
+import os
+import numpy as np 
+import cv2 as cv 
+
+def get_sample(filename, repo='opencv'):
+    if not os.path.exists(filename):
+        if repo == 'insightbook':
+            url = f"https://raw.githubusercontent.com/dltpdn/insightbook.opencv_project_python/master/img/{filename}"
+        else:  # opencv 공식
+            url = f"https://raw.githubusercontent.com/opencv/opencv/master/samples/data/{filename}"
+        urllib.request.urlretrieve(url, filename)
+    return filename
+
+#img = cv.imread(get_sample('messi5.jpg', repo='opencv'))
+img = cv.imread(get_sample('messi5.jpg'), cv.IMREAD_GRAYSCALE)
+h, w = img.shape
+
+#res = cv.resize(img, None, fx=4, fy=4, interpolation = cv.INTER_CUBIC)
+# 평행 이동 
+M = np.float32([[1, 0, 100], [0, 1, 50]])
+dst = cv.warpAffine(img, M, (w, h))
+
+cv.imshow("Original", img)
+#cv.imshow("Scaling", res)
+cv.imshow("Traslated", dst)
+
+cv.waitKey(0)
+cv.destroyAllWindows()
