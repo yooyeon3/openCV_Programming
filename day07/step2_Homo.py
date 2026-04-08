@@ -15,8 +15,9 @@ def draw_matches(img1, kp1, img2, kp2, matches, title="Matches"):
     plt.show()
 
 # ========== Step 1: 이미지 로드 ==========
-img2 = cv.imread(get_sample('book2.jpg'), cv.IMREAD_GRAYSCALE)
 img1 = cv.imread(get_sample('book_in_scene2.png'), cv.IMREAD_GRAYSCALE)
+img2 = cv.imread(get_sample('book2.jpg'), cv.IMREAD_GRAYSCALE)
+
 
 if img1 is None or img2 is None:
     print("Error: 이미지를 찾을 수 없습니다.")
